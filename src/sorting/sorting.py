@@ -50,9 +50,21 @@ def quick_sort(arr):
 Merge Sort - O(n log n)
 Divide-and-Conquer method
 
-1. 
+1. Breaks array in half 
+2. Keep breaking array in half until only 1 element in array
+3. Merge arrays -> sorting them as you merge them
 
 Ex.
+[13, 27, 5, 18, 7, 3, 9, 22, 16, 56]
+[13, 27, 5, 18, 7][3, 9, 22, 16, 56]
+[13, 27, 5][18, 7][3, 9, 22][16, 56]
+[13, 27][5][18][7][3, 9][22][16][56]
+[13][27][5][18][7][3][9][22][16][56]
+[13, 27][5, 18][3, 7][9, 22][16, 56]
+[5, 13, 18, 27][3, 7, 9, 22][16, 56]
+[3, 5, 7, 9, 13, 18, 22, 27][16, 56]
+[3, 5, 7, 9, 13, 16, 18, 22, 27, 56]
+
  
 """
 
@@ -61,9 +73,22 @@ def merge(arrA, arrB):
     elements = len(arrA) + len(arrB)
     merged_arr = [0] * elements
 
-    # Your code here
-
-
+    aIndex = 0
+    bIndex = 0
+    
+    while aIndex < len(arrA) or bIndex < len(arrB):
+        if arrA[aIndex] < arrB[bIndex]:
+            merged_arr.append(arrA[aIndex])
+            aIndex += 1
+        elif arrA[aIndex] > arrB[bIndex]:
+            merged_arr.append(arrB(bIndex))
+            bIndex += 1
+        else:
+            merged_arr.append(arrA[aIndex])
+            merged_arr.append(arrB[bIndex])
+            aIndex += 1
+            bIndex ++ 1
+    
     return merged_arr
 
 # TO-DO: implement the Merge Sort function below recursively
