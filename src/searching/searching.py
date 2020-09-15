@@ -1,7 +1,29 @@
+"""
+Binary search
+
+1. Find the midpoint element
+    -round down if even elements
+2. Compare the target agains the midpoint element
+3. If the target matches the midpoint element return the index
+4. Otherwise, determine which direction the binary search needs to go in
+"""
 # TO-DO: Implement a recursive implementation of binary search
 def binary_search(arr, target, start, end):
-    # Your code here
-    pass
+    #base case - target not in the array
+    if start > end:
+        return -1
+    else:
+        #find midpoint 
+        midpoint = (start + end) // 2
+        #base case
+        if arr[midpoint] == target:
+            return midpoint
+        elif arr[midpoint] < target:
+            #check the array from the midpoint + 1 to the end
+            return binary_search(arr, target, (midpoint+1), end)
+        else:
+            #check the array from the start to the midpoint - 1
+            return binary_search(arr, target, start, (midpoint -1))
 
 
 # STRETCH: implement an order-agnostic binary search
