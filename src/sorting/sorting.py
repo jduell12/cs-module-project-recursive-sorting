@@ -76,6 +76,7 @@ def merge(arrA, arrB):
     elements = aLen + bLen
     merged_arr = [0] * elements
     
+    #initialize indices for the a array and b array to keep track of where we are in the array to make sure we don't go beyond the length of the specific array
     aIndex = 0
     bIndex = 0
     
@@ -92,6 +93,7 @@ def merge(arrA, arrB):
             aIndex += 1
         #not at the end of either array
         else:
+            #check which element is smaller and append it to the merged array
             if arrA[aIndex] > arrB[bIndex]:
                 merged_arr[i] = arrB[bIndex]
                 bIndex += 1
@@ -113,10 +115,12 @@ def merge_sort(arr):
     right = arr[middle:]    
     
     #if there's more than 1 number in the left array
+    #checks for base case on left array
     if len(left) > 1:
         left = merge_sort(left)
     
     #if there's more than 1 number in the right array
+    #checks for base case on right array
     if len(right) > 1:
         right = merge_sort(right)
     
@@ -124,10 +128,6 @@ def merge_sort(arr):
     
     return arr
      
-    
-        
-        
-      
 
 # STRETCH: implement the recursive logic for merge sort in a way that doesn't 
 # utilize any extra memory
