@@ -129,15 +129,55 @@ def merge_sort(arr):
     return arr
      
 
-# STRETCH: implement the recursive logic for merge sort in a way that doesn't 
-# utilize any extra memory
-# In other words, your implementation should not allocate any additional lists 
-# or data structures; it can only re-use the memory it was given as input
+# STRETCH: implement the recursive logic for merge sort in a way that doesn't utilize any extra memory
+#In other words, your implementation should not allocate any additional lists or data structures; it can only re-use the memory it was given as input
 def merge_in_place(arr, start, mid, end):
-    # Your code here
-    pass
+    print('-----------------------------')
+    print(arr)
+    print('start ', start)
+    print('mid ', mid)
+    print('end ', end)
+    
+    index = 0
+    
+    while index < end:
+        if arr[index] > arr[index + 1]:
+            arr[index], arr[index+1] = arr[index+1], arr[index]
+        index += 1
+    
+    print(arr)
+    print('-----------------------------')
+    
+    return arr
+            
+            
 
 def merge_sort_in_place(arr, l, r):
-    # Your code here
-    pass
+    #find midpoint based on start and ending pointers
+    if r == len(arr) - 1:
+        midpoint = len(arr)//2
+    else:
+        midpoint = (r - l) // 2
+    # print('midpoint: ', midpoint)
+    leftCount = 0
+    rightCount = 0
+   
+    for num in range(r-l + 1):
+        if num < midpoint:
+            if arr[num]:
+                leftCount += 1
+        else:
+            rightCount += 1
+
+    # print(arr[:midpoint])
+    
+    if leftCount > 1:
+        merge_sort_in_place(arr, l, midpoint)
+    
+    # if rightCount > 1:
+    #     merge_sort_in_place(arr, midpoint, r)
+            
+    arr = merge_in_place(arr, l, midpoint, r)
+    return arr 
+        
 
