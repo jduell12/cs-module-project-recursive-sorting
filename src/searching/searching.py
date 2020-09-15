@@ -33,5 +33,24 @@ def binary_search(arr, target, start, end):
 # You can implement this function either recursively 
 # or iteratively
 def agnostic_binary_search(arr, target):
-    # Your code here
-    pass
+    #if sorted in ascending order
+    if arr[0] < arr[len(arr)-1]:
+        return binary_search(arr, target, 0, len(arr)-1)
+    #sorted in descending order
+    else:
+       left = 0
+       right = len(arr) - 1
+       
+       while left <= right:
+           #find midpoint
+           midpoint = (left + right) // 2
+           #check if midpoint is the target value
+           if arr[midpoint] == target:
+               return midpoint
+           elif arr[midpoint] < target:
+               right = midpoint - 1
+           else:
+               left = midpoint + 1
+       return -1
+           
+            
