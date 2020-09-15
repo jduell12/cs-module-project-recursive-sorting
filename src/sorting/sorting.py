@@ -1,7 +1,7 @@
 """
-Quicksort - O(n^2)
-
+Quicksort - O(n log n)
 Divide-and-conquer method
+
 1. Pick a pivot element (pick 1st array element)
 2. Paritition the rest of the elements around the pivot element 
     - elements > pivot point will go in right partition
@@ -18,11 +18,42 @@ Pivot = 15
 [4][7][15][27] [28][32] [52][96][126]
 [4, 7, 15, 27, 28, 32, 52, 96, 126]
 """
+#helper function that picks the pivot and does the partitioning
+def partition(arr):
+    #initialize pivot element 
+    pivot = arr[0]
+    #initialize left and right partitions
+    left = []
+    right = []
+    #iterate starting at index 1
+    for x in range(len(arr)):
+        if x != 0:
+            if arr[x] <= pivot:
+                left.append(arr[x])
+            else:
+                right.append(arr[x])
+    #have elements partitions in the left, pivot and right arrays 
+    return left, pivot, right 
 
+def quick_sort(arr):
+    #base case  - if length of arr is <= 1
+    if len(arr) <= 1:
+        return arr
+    
+    left, pivot, right = partition(arr)
+    pivot = [pivot]
+    qleft = quick_sort(left)
+    qright = quick_sort(right)
+    return qleft + pivot + qright
+    
 """
 Merge Sort - O(n log n)
-
 Divide-and-Conquer method
+
+1. 
+
+Ex.
+ 
 """
 
 # TO-DO: complete the helper function below to merge 2 sorted arrays
